@@ -11,14 +11,14 @@ def in_range(x, y):
 
 for i in range(1, m*n):
     nx, ny = x + dxs[dir_num], y + dys[dir_num]
-    
+
     if in_range(nx, ny) and grid[nx][ny] == 0:
         x, y = x + dxs[dir_num], y + dys[dir_num]
-        grid[x][y] = chr(i + ord('A'))
+        grid[x][y] = chr((i % 26 + ord('A')))
     else:
         dir_num = (dir_num + 1) % 4
         x, y = x + dxs[dir_num], y + dys[dir_num]
-        grid[x][y] = chr(i + ord('A'))
+        grid[x][y] = chr(i % 26 + ord('A'))
 
 for i in range(n):
     for j in range(m):
