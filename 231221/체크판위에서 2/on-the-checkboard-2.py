@@ -19,4 +19,4 @@ else:
             for j in range(y+1, R-1):
                 if grid[x][y] != grid[i][j]:
                     cnt += 1
-print(cnt)
+    print(cnt)
