@@ -6,7 +6,7 @@ arr = [int(input())
 ]
 
 min_dist = sys.maxsize
-for i in range(0, n):
+for i in range(n):
     dist = 0
     prev_idx = i
     for j in range(i+1, n+i):
