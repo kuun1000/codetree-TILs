@@ -23,7 +23,7 @@ for _ in range(n):
         dir_num = 3
 
     # 방향에 따라 거리만큼 이동
-    x += dx[md] * dist
-    y += dy[md] * dist
+    x += dx[dir_num] * dist
+    y += dy[dir_num] * dist
 
 print(x, y)
