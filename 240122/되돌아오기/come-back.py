@@ -8,8 +8,6 @@ dir_num = 0  # 이동 방향
 sec = 0      # 걸린 시간
 answer = -1  # 정답 
 
-check = False # 시작점으로 돌아왔는지
-
 for _ in range(N):
     direction, distance = input().split()
     dir_num = mapper[direction]
@@ -21,9 +19,6 @@ for _ in range(N):
 
         if x == 0 and y == 0: # 시작점으로 돌아온 경우
             answer = sec
-            check = True
-
-    if check:
-        break
+            break
 
 print(answer)
