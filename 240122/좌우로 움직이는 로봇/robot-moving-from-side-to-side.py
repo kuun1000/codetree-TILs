@@ -1,5 +1,4 @@
 MAX_D = 1000000
-
 n, m = tuple(map(int, input().split()))
 pos_a, pos_b = [0] * (MAX_D + 1), [0] * (MAX_D + 1)
 
@@ -8,15 +7,10 @@ time_a = 1  # 현재 시간(t)
 for _ in range(n):
     t, d = input().split()
     t = int(t)
-    
-    if d == "L":
-        for _ in range (t):
-            pos_a[time_a] = pos_a[time_a - 1] - 1
-            time_a += 1 
-    else:
-        for _ in range (t):
-            pos_a[time_a] = pos_a[time_a - 1] + 1
-            time_a += 1 
+    # t초 동안, 이전 값 + 방향에 따른 값 (R: +1, L: -1)
+    for _ in range(int(t)):
+        pos_a[time_a] = pos_a[time_a - 1] + (1 if d == 'R' else -1)
+        time_a += 1
 
 ## B
 time_b = 1  # 현재 시간(t)
@@ -24,21 +18,19 @@ for _ in range(n):
     t, d = input().split()
     t = int(t)
     
-    if d == "L":
-        for _ in range (t):
-            pos_b[time_b] = pos_b[time_b - 1] - 1
-            time_b += 1 
-    else:
-        for _ in range (t):
-            pos_b[time_b] = pos_b[time_b - 1] + 1
-            time_b += 1 
+    # t초 동안, 이전 값 + 방향에 따른 값 (R: +1, L: -1)
+    for _ in range(int(t)):
+        pos_b[time_b] = pos_b[time_b - 1] + (1 if d == 'R' else -1)
+        time_b += 1
+
 
 ## 보정
 diff = len(pos_a) - len(pos_b)
 if diff > 0:
-    pos_b += [pos_b[-1] * diff]
+    pos_b += [pos_b[time_b] * diff]
 elif diff < 0:
-    pos_a += [pos_a[-1] * diff]
+    pos_a += [pos_a[time_a] * diff]
+
 
 ## 위치 비교 
 prev_pos, cur_pos = 0, 0
