@@ -2,7 +2,7 @@ import sys
 INT_MAX = sys.maxsize
 
 n = int(input())
-arr = [tuple(map(int, input().split())) for _ in range(n)]
+arr = [list(map(int, input().split())) for _ in range(n)]
 
 # Please write your code here.
 ans = INT_MAX
