@@ -31,5 +31,7 @@ while q.size() != 1:
     for i in range(1, k):
         q.push(q.front())
         q.pop()
-    print(q.pop(), end=" ")
-print(q.front())
+    print(q.front(), end=" ")
+    q.pop()
+    
+print(q.front(), end=" ")
