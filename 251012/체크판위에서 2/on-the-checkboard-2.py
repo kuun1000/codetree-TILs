@@ -6,7 +6,7 @@ for i in range(r):
     for j in range(c):
         for k in range(i+1, r-1):
             for l in range(j+1, c-1):
-                if grid[0][0] != grid[i][j] and grid[i][j] != grid[k][l]:
+                if grid[0][0] != grid[i][j] and grid[i][j] != grid[k][l] and grid[k][l] != grid[r-1][c-1]:
                     result += 1
                 
 print(result)
