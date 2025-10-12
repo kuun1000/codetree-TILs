@@ -1,16 +1,17 @@
 import sys
 
-arr = list(input())
+arr = list(map(int, input()))
 n = len(arr)
 
-base = 0
+result = -sys.maxsize
 for i in range(n):
-    if arr[i] == '1':
-        base += 2 ** (n-i-1)
+    arr[i] = 1 - arr[i]
 
-result = base
-for i in range(n): 
-    if arr[i] == '0':
-        result = max(result, base + 2 ** (n-i-1))
+    num = 0
+    for j in range(n):
+        num = num * 2 + arr[j]
+    
+    result = max(result, num)
+    arr[i] = 1 - arr[i]
 
 print(result)
