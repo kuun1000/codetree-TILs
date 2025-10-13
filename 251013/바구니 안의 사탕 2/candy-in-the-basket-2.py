@@ -6,8 +6,9 @@ for _ in range(n):
     arr[basket] += candy
 
 ans = 0
-for i in range(k, 100-k):
-    max_val = sum(arr[i-k:i+k+1])
-    ans = max(ans, max_val)
+for i in range(101):
+    left = max(0, i - k)
+    right = min(100, i + k)
+    ans = max(ans, sum(arr[left:right + 1]))
 
 print(ans)
