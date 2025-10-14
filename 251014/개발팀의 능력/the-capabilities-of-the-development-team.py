@@ -1,27 +1,30 @@
-import sys
+skills = list(map(int, input().split()))
+n = 5
+min_diff = float('inf')
+found = False
 
-arr = list(map(int, input().split()))
-n = len(arr)
-
-def get_diff(a, b, c, d, e):
-    team1 = arr[a] + arr[b]
-    team2 = arr[c] + arr[d]
-    team3 = arr[e]
-
-    return max(team1, team2, team3) - min(team1, team2, team3)
-
-ans = sys.maxsize
 for i in range(n):
     for j in range(i+1, n):
-        for k in range(j+1, n):
-            if k == i or k == j:
-                continue
-            for l in range(k+1, n):
-                if l == i or l == j:
+        team1 = skills[i] + skills[j]
+        remain1 = [x for x in range(n) if x not in [i, j]]
+        
+        for a in range(len(remain1)):
+            for b in range(a+1, len(remain1)):
+                team2 = skills[remain1[a]] + skills[remain1[b]]
+                last_idx = [x for x in remain1 if x not in [remain1[a], remain1[b]]][0]
+                team3 = skills[last_idx]
+                
+                teams = [team1, team2, team3]
+                
+                # 팀 능력치가 모두 달라야 함
+                if len(set(teams)) < 3:
                     continue
-                for m in range(n):
-                    if m in (i, j, k, l):
-                        continue
-                    ans = min(ans, get_diff(i, j, k, l, m))
+                
+                diff = max(teams) - min(teams)
+                min_diff = min(min_diff, diff)
+                found = True
 
-print(ans)
+if found:
+    print(min_diff)
+else:
+    print(-1)
