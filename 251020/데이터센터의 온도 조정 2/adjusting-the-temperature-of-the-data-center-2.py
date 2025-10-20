@@ -7,7 +7,7 @@ for _ in range(n):
     a, b = list(map(int, input().split()))
     min_prefs.append(a)
     max_prefs.append(b)
-min_range, max_range = min(min_prefs), max(max_prefs)
+min_range, max_range = min(min_prefs) - 1, max(max_prefs) + 1
 
 ans = -sys.maxsize
 for temp in range(min_range, max_range+1):
